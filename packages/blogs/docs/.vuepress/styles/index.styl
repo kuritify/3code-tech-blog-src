@@ -1,0 +1,44 @@
+@require './palette'
+
+.custom-block.tip {
+    background-color: #f3f5f7;
+    border-color: $accentColor;
+}
+
+.theorem
+  margin 1rem 0
+  padding .1rem 1.5rem
+  border-radius 0.4rem
+  background-color #f0f4f8
+  .title
+    font-weight bold
+
+.custom-block
+  &.right
+    color transparentify($textColor, 0.4)
+    font-size 0.9rem
+    text-align right
+
+div>p>code
+  font-size: 85% !important;
+  background-color: #fff2ef !important;
+  color: $accentColor !important;
+  padding: 0.2rem !important;
+
+.custom-block
+  &.details
+    display block
+    position relative
+    border-radius 2px
+    margin 0.7rem 0
+    padding 1rem
+    background-color #eee
+    h4
+      margin-top 0
+    figure, p
+      &:last-child
+        margin-bottom 0
+        padding-bottom 0
+    summary
+      outline none
+      cursor pointer

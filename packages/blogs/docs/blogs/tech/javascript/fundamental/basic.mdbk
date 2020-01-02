@@ -1,0 +1,98 @@
+## that core
+javascriptはコア言語機能のうえに各実行環境固有のホストオブジェクトがのっている。
+これはJSが拡張言語として設計されたことに起因します。汎用プログラミング言語の場合、実行時のコンテキストを作るのは開発者の責任です。拡張言語は、組み込み対象のアプリ（ホスト環境）の中でプログラムが動きます。この時、ホストアプリからなんらかの実行コンテキストを受け取ります。JSは、グローバルオブジェクトをルートしたオブジェクトツリーの形でこれを受け取ります。JSが起動時にホスト環境から受け取るこのオブジェクトツリーを、ホストオブジェクトと呼びます。
+global objectをJSのコード視点でみると、起動時から暗黙に存在するオブジェクトで、Browser環境ではwindowsオブジェクトにあたります。
+
+## brower rendering sequence
+1. parse HTML
+2. load external js, css files
+3. execute js when js is parsed
+4. build dom tree
+5. load external resources(eg: images)
+6. all is one
+
+DOMツリーが構築された時点でJSを実行することで、ユーザに乗っての待ち時間を減らすことができます。
+
+## javascriptの記述方法と実行タイミング
+1. <script>タグ
+  <script>タグ内に書くやつ。解析された直後に実行されるので、そのあとに書いてあるDOMは操作できない
+2. 外部JSファイルの読み込み
+defer(ほかのスクリプトタグより最後), async(非同期で外部ファイル読み込み)属性を指定可能
+  ```
+  <head>
+    <script src="http://..../...js"></script>
+  </head>
+  ```
+  
+3. onload
+  `<body onload=alert('hello')` or `windows.onload = function() { alert('hello') }`
+  すべての画像ファイルを読み込んだ後で実行される
+
+4. DOMContentLoaded
+  domのbuildが終わった時点で実行される。onloadみたいに、画像の読み込みを待たない
+  IE8より前では動かない
+  ```
+  document.addEventListener('DOMContentLoaded', function() {
+    alert('hello')
+  }, false);
+  ```
+
+5. dynamic load
+  script要素を動的に生成することでJavascriptファイルをロードすることができる
+  ```
+  var script = document.createElement('script');
+  srcrit.src = 'other-javascript.js';
+  document.getElementByTagName('head')[0].appendChild(script);
+  ```
+
+  この方法を使うと、JSファイルのダウンロードから実行が開始されるまではそのほかの処理をブロックしません。これは大きな利点です。ページ内にはscript要素が直接記述されている場合は、そのJavaScriptファイルをダウンロードしている間、ほかの画像ファイルやCssファイルのダウンロードをブロックしてしまいます。しかしながらこの動的ロードを利用するとほかのファイルのダウンロードをフロックすることなく処理が進みます。
+
+
+# dynamic import plain javascript
+https://v8.dev/features/dynamic-import
+
+
+# webpack
+Core concepts
+
+## Entry
+webpackがdependency graphを構築するエントリーポイン, figure out which other modules and libraries that entry point depends on (directry and indirectly)
+
+## Loaders
+OOTB, webpack only understands JS and JSON files.
+Loaders allow webpack to process other types of files and convert them into valid modules that can be consumed by your application and added to the dependecny graph.
+
+## Plugins
+While loader are used to transofrm certain types of modules, plugins can be leveraged to perform a wider range of tasks like bundle optimization, asset management and injection of environment variables.
+
+## Mode
+* development
+* production(default)
+* none
+
+can enable webpack's built-in optiomizations that correspond to each environment.
+
+デフォルトだと、ESScript2015の`import`, `export`のみをトランスパイルする。それ以外のES2015の機能を使う場合はBabelトランスパイラーを使う。
+
+# OutputManagement
+## The Manifest
+You might be wondering how webpack and its plugins seem to "know" what files are being generated.
+The answer is in the manifest that webpack keeps to track how all the modules map to the output bundles.
+
+THe manifeset data can be extacted into a json file for easy consumption using the WebpackManifestPlugin.
+
+
+## Code spliting
+code spliting is one of the most compelling features of webpack.
+This feature allows you to spit your code into various bundles wihic can then be loaded on demand or in parallel.
+
+There are three general approaches to code spliting available:
+* Entry Points: Manually split code using `entry` configuration.
+* Prevent Duplication: Use the `SplitChunksPlugin` to dedupe and split chunks.
+* Dynamic Imports: Split code via inline function calls within modules.
+
+
+## SSR
+SO the basic idea is we will be useing webpack to bundle our app for both client and server - the server bundle will be required by the server and used for SSR, while the client bundle is sent to the browser to hydrate the static markup. 
+![build image](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png)
+
