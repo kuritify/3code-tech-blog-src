@@ -1,6 +1,9 @@
 {
   "name": "3code-tech-blog",
   "private": true,
+  "scripts": {
+    "dev:docs": "yarn workspace blogs docs:dev"
+  },
   "workspaces": [
     "packages/vuepress-plugin-autometa-mine",
     "packages/vuepress-plugin-rss-mine",
