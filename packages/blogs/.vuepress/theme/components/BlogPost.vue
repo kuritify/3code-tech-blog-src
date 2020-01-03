@@ -120,4 +120,8 @@ theme-default-content.content__default
   font-family: 'Poppins';
 }
 
+img.medium-zoom-image {
+  margin-bottom: 2.5rem
+}
+
 </style>
