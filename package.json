@@ -2,7 +2,8 @@
   "name": "3code-tech-blog",
   "private": true,
   "scripts": {
-    "dev:docs": "yarn workspace blogs docs:dev"
+    "docs:dev": "yarn workspace blogs docs:dev",
+    "docs:build": "yarn workspace blogs docs:build"
   },
   "workspaces": [
     "packages/vuepress-plugin-autometa-mine",

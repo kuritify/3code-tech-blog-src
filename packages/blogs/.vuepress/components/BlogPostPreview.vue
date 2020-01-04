@@ -75,7 +75,7 @@ primary-color = $accentColor
 
 .blog-post__excerpt {
     margin-top: 0;
-    font-size: 1.12rem;
+    font-size: 1rem;
 
 }
 
@@ -95,8 +95,7 @@ primary-color = $accentColor
 }
 
 .button {
-    font-family: 'Poppins';
-    font-weight: 500;
+  font-weight: 500;
 	border: 1px solid primary-color;
 	border-radius: 4px;
 	color: primary-color;
@@ -145,7 +144,7 @@ primary-color = $accentColor
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.4rem;
 }
 
 .ui-post-date {

@@ -37,7 +37,28 @@ WEB系ベンチャー企業2社を経て、現在は外資系ITコンサルテ�
 
 前述したように、[サーバレスアーキテクチャー](https://en.wikipedia.org/wiki/Serverless_computing)、[Jam Stack](https://jamstack.org/)をベースに開発者エクスペリエンスを最大化するための情報発信をしています。
 
+### 記事のフォーマット
+各記事にガバナンスを効かせることで読者の方の情報収集コストを最小化できればと考えています。
 
+テック系の記事はいわゆるCookBookであると考えています。DRYの原則に従い記事のフォーマットは[O'Reilly Problem/Solution/Discussion CookBook format ](https://guides.emberjs.com/v1.12.0/cookbook/contributing/understanding_the_cookbook_format/)を、記事に記載すべき内容は[Vue.js CookBook Introduction](https://jp.vuejs.org/v2/cookbook/index.html)を参考にしています。
+
+記事の内容によっては完全に準拠できてはいませんが、{{ $siteTitle }}の各記事は以下のフォーマットで構成されます。各章は更に細かい章立てで構成される場合があります。
+
+#### Problem 必須
+記事で扱う問題、ゴールのアウトラインを説明します
+
+#### Solution 必須
+Problemで提起した問題の解決案のサマリーを説明します。解決方法だけを探している場合、ここまで読んでいただければ目的を達成できるようにしています
+
+#### Discusion 任意
+Solutionの内容、そこに至った背景などを深掘りします。より深い理解の手助けができるようこの章を充実させるよう努めています。記載する内容は[Vue.js CookBook Introduction](https://jp.vuejs.org/v2/cookbook/index.html)で推奨されている項目から適切なものをピックアップしています。
+
+#### See Also 任意
+参考リンクの一覧です。
+
+テック系の記事には極力サンプルコードとあわせて提供しています。サンプルコードと記事はそれぞれGithubで公開しており、記事とサンプルコードの関連性はReadme.mdをご確認下さい。
+
+### サイト名の由来
 ブログには`3code`と名前をつけました。これには私の趣味であるPUNK ROCKが由来しています。
 PUNK ROCKは文化的要素、精神的な要素、音楽的な要素とそれぞれ特徴がありますが、音楽的な要素としてはスリーコードのギターリフをかき鳴らすシンプルな点が挙げられます。スリーコードのシンプルなリフの代表格は3大パンクバンドの一つThe Ramonesですが、彼らのインタビューを読んだところ、その音楽性が生まれたのは**楽器が弾けなかったから**というのが理由だそうです。とりあえずやってみる。ということですね。かっこよくないですか？
 

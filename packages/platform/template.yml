@@ -1,0 +1,71 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Parameters:
+  ProjectName:
+    Description: Project Name
+    Type: String
+  ServiceDomain:
+    Description: service domain use cloudfront-s3 creation
+    Type: String
+    Default: localhost
+  AcmCertificateArn:
+    Description: ssl certificate arn of acm
+    Type: String
+
+Resources:
+  # ------------------------------------------------------------#
+  #  Cloud Front
+  # ------------------------------------------------------------#
+  CloudfrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !Sub "${ProjectName}"
+
+  CDNBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref ServiceDomain
+
+  CDNBucketBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref CDNBucket
+      PolicyDocument:
+        Statement:
+          - Action: "s3:GetObject"
+            Effect: "Allow"
+            Resource: !Join ["", [!GetAtt CDNBucket.Arn, "/*"]]
+            Principal:
+              AWS: !Sub "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${CloudfrontOriginAccessIdentity}"
+
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+          - Id: !Sub "S3-${CDNBucket}"
+            DomainName: !GetAtt CDNBucket.DomainName
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${CloudfrontOriginAccessIdentity}
+        Enabled: true
+        DefaultRootObject: index.html
+        Comment: !Sub "${AWS::StackName} distribution"
+        DefaultCacheBehavior:
+          TargetOriginId: !Sub "S3-${CDNBucket}"
+          ForwardedValues:
+            QueryString: false
+          ViewerProtocolPolicy: redirect-to-https
+        CustomErrorResponses:
+          -  ErrorCachingMinTTL: 0
+             ErrorCode: 404
+             ResponseCode: 200
+             ResponsePagePath: /404.html
+        Aliases:
+          - !Ref ServiceDomain
+        # IamCertificateId or AcmCertificateArn can be specified only if SslSupportMethod must also be specified and vice-versa.ViewerCertificate
+        ViewerCertificate:
+          AcmCertificateArn: !Ref AcmCertificateArn
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1.1_2016
+        HttpVersion: http2

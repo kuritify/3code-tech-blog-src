@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Parameters:
+  ProjectName:
+    Description: Project Name
+    Type: String
+
+  ServiceDomain:
+    Description: service domain use cloudfront-s3 creation
+    Type: String
+    Default: localhost
+Resources:
+  ACMSSLCertificate:
+      Type: AWS::CertificateManager::Certificate
+      Properties: 
+        DomainName: !Ref ServiceDomain
+        ValidationMethod: DNS
+Outputs:
+  ACMSSLCertificateArn:
+    Description: "arn of ssl certificate"
+    Value: !Ref ACMSSLCertificate

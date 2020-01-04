@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    Copyright © 2019-present Shintaro Kurihara. Powered By
+    Copyright © 2020-present Shintaro Kurihara. Powered By
     <a href="https://vuepress.vuejs.org" title="by Vuepress" target="_blank"
       >VuePress <OutboundLink
     /></a>
@@ -14,11 +14,6 @@ export default {
   components: {
     OutboundLink
   },
-  computed: {
-    footerMsg() {
-      return "Copyright © 2019-present Shintaro Kurihara. Powered By VuePress";
-    }
-  }
 };
 </script>
 

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:dev": "vuepress dev 3code-tech-blog/docs",
+    "docs:build": "vuepress build 3code-tech-blog/docs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.12.0",
@@ -31,6 +31,7 @@
     "vuepress-plugin-sitemap": "^2.3.1"
   },
   "dependencies": {
+    "@vuepress/plugin-google-analytics": "^1.2.0",
     "moment": "^2.24.0"
   },
   "husky": {

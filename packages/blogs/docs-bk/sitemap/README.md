@@ -11,7 +11,11 @@ editLink: false
 * [新着記事一覧](/blogs/)
 
 ## お問い合わせ
-* コンタクト情報
-* このサイトについて
+* [コンタクト情報](/contact/)
+
+
+## About
+* [プロフィール](/about/me)
+* [サイトについて](/about/me.html#_3code-techblog-について)
 
 

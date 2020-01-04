@@ -1,6 +1,6 @@
 const { fs, path } = require("@vuepress/shared-utils");
 
-const siteTitle = "3code TechBlog"
+const siteTitle = "3code Tech Blog"
 const siteUrl = "https://tech-blog.3code.dev"
 const autometa_options = {
   autor: {
@@ -16,9 +16,10 @@ const autometa_options = {
 };
 
 module.exports = ctx => ({
+  patterns: ['**/*.md', '**/*.vue', '!**/wip-*.md', '!sample-code', '!temporary'],
   dest: "dist",
   markdown: {
-    lineNumbers: true
+    lineNumbers: false
   },
   extendMarkdown: md => {
     md.use(require("markdown-it-plantuml"));
@@ -28,11 +29,11 @@ module.exports = ctx => ({
     "/": {
       lang: "ja",
       title: siteTitle,
-      description: "Let’s maximize the Developer Experience!"
+      description: "Maximize the Developer Experience !"
     },
   //  "/en/": {
   //    lang: "en-US",
-  //    title: siteTitle,
+  //    title: siteTitle
   //    description: "Let’s maximize the Developer Experience!"
   //  }
   },
@@ -42,8 +43,10 @@ module.exports = ctx => ({
     ["meta", { name: "msapplication-TileColor", content: "#000000" }]
   ],
   themeConfig: {
-    docsRepo: "creep32/3code-techblogs",
+    siteUrl: siteUrl,
+    docsRepo: "creep32/3code-tech-blog",
     docsDir: 'docs',
+    codeDir: 'docs/sample-code',
     searchPlaceholder: "search on blog...",
     editLinks: true,
     showLinks: true,
@@ -70,7 +73,8 @@ module.exports = ctx => ({
         profileLink: "/about/me",
         profileLinkText: "プロフィール詳細",
         shortProfileName: "栗原 真太郎",
-        shortProfileText: "外資系ITコンサルティングファームでアーキテクトに従事しつつ、メーカ企業でシステム内製化のサポートを行っている。本ブログを通じて開発者エクスぺリンエスを最大化するプラクティスについて発信中"
+        shortProfileText: "外資系ITコンサルティングファームでアーキテクトに従事しつつメーカ企業でシステム内製化のサポートを行っている。本ブログを通じて開発者エクスぺリンエスを最大化するプラクティスについて発信中",
+        sampleCodeText: "サンプルコード"
       },
   //    "/en/": {
   //      label: "English",
@@ -150,7 +154,7 @@ module.exports = ctx => ({
 			'vuepress-plugin-rss-mine',
 			{
 				base_url: '/',
-				site_url: 'https://tech-blogs.3code.dev',
+				site_url: siteUrl,
 				filter: $page => $page.path.match(/^(\/en)?\/blogs\/.*[\/]/),
 				count: 20
 			}
@@ -158,7 +162,8 @@ module.exports = ctx => ({
     [
       'sitemap',
         {
-          hostname: 'https://tech-blog.3code.dev'
+          hostname: siteUrl,
+          exclude: ['/404.html']
         },
     ],
     [
@@ -210,7 +215,11 @@ module.exports = ctx => ({
         },
       },
     ],
-
+    ['container', {
+      type: 'vue',
+      before: '<pre class="vue-container"><code>',
+      after: '</code></pre>'
+    }],
    ["smooth-scroll", true],
     [
       "@vuepress/search",
@@ -231,7 +240,7 @@ module.exports = ctx => ({
     [
       "@vuepress/google-analytics",
       {
-        ga: "UA-128189152-1"
+        ga: "UA-155253380-1"
       }
     ],
   ],
