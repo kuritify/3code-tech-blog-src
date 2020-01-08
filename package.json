@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "docs:dev": "yarn workspace blogs docs:dev",
-    "docs:build": "yarn workspace blogs docs:build"
+    "docs:build": "yarn workspace blogs docs:build",
+    "bootstrap": "git clone git@github.com:creep32/3code-tech-blog.git packages/blogs/3code-tech-blog"
   },
   "workspaces": [
     "packages/vuepress-plugin-autometa-mine",
