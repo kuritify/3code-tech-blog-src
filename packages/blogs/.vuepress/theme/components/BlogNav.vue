@@ -26,10 +26,10 @@ export default {
   name: "BlogNav",
   computed: {
     prev() {
-      return resolvePageLinks(this).prev;
+      return resolvePageLinks(this).next;
     },
     next() {
-      return resolvePageLinks(this).next;
+      return resolvePageLinks(this).prev;
     }
   }
 };

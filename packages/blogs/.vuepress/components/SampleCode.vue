@@ -14,6 +14,10 @@ export default {
   props: {
     text: {
       type: String,
+    },
+    deepPath: {
+      type: String,
+      default: ""
     }
   },
   compponents: { OutboundLink },
@@ -43,6 +47,7 @@ export default {
       path = path.replace(/[.]md$/, '')
       path = path.replace(/^en\//,'')
       path = path.replace(/^blogs\//,'')
+      path += this.deepPath
       const base = outboundRE.test(docsRepo)
         ? docsRepo
         : `https://github.com/${docsRepo}`

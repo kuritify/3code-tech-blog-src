@@ -74,7 +74,9 @@ module.exports = ctx => ({
         profileLinkText: "プロフィール詳細",
         shortProfileName: "栗原 真太郎",
         shortProfileText: "外資系ITコンサルティングファームでアーキテクトに従事しつつメーカ企業でシステム内製化のサポートを行っている。本ブログを通じて開発者エクスぺリンエスを最大化するプラクティスについて発信中",
-        sampleCodeText: "サンプルコード"
+        sampleCodeText: "サンプルコード",
+        sampleCodeNotePre: "この記事のサンプルコードは",
+        sampleCodeNotePost: "で確認できます。"
       },
   //    "/en/": {
   //      label: "English",

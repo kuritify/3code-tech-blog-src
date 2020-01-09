@@ -17,7 +17,7 @@
 
       <Badge v-for="tag of this.$page.frontmatter.tags" :text="tag" />
 
-      <span class="post_format"><router-link :to="postFormatLink">{{ postFormatLinkText }}</router-link></span>
+      <span v-if="$page.frontmatter.nonFormated === undefined" class="post_format"><router-link :to="postFormatLink">{{ postFormatLinkText }}</router-link></span>
     </div>
 
     <Content class="theme-default-content" />
