@@ -2,9 +2,9 @@
 <section class="sidebar-profile">
   <p class="sidebar-heading open" style="margin-bottom: 1.1rem;"><span>Profile</span></p>
   <div class="profile-content" style="margin-bottom: 0.1rem;">
-    <img src="/profile.jpg" alt="Photo of Shintaro Kurihara" width="150" class="circle-image" style="margin-bottom: 0.8rem;">
+    <img src="/profile.png" alt="Photo of Kuritify" width="150" class="circle-image" style="margin-bottom: 0.8rem;">
     <div>
-      <a href="https://twitter.com/creep_32?ref_src=twsrc%5Etfw" class="twitter-follow-button" :data-lang="$themeLocaleConfig.lang" data-show-count="false">Follow @creep_32</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <a href="https://twitter.com/kuritify?ref_src=twsrc%5Etfw" class="twitter-follow-button" :data-lang="$themeLocaleConfig.lang" data-show-count="false">Follow @kuritify</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
   </div>
   <div class="profile-content" style="padding-bottom: 3rem;">
@@ -47,6 +47,8 @@
 
 .circle-image {
     border-radius: 50%;
+    border-color: black;
+    border: solid;
 }
 
 .profile-content {

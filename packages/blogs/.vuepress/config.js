@@ -4,8 +4,8 @@ const siteTitle = "3code Tech Blog"
 const siteUrl = "https://tech-blog.3code.dev"
 const autometa_options = {
   autor: {
-    name   : 'Shintaro Kurihara',
-    twitter: 'creep_32'
+    name   : 'Kuritify',
+    twitter: 'kuritify'
   },
   site: {
     name   : siteTitle,
@@ -72,7 +72,7 @@ module.exports = ctx => ({
         },
         profileLink: "/about/me",
         profileLinkText: "プロフィール詳細",
-        shortProfileName: "栗原 真太郎",
+        shortProfileName: "くりてぃふぁい 👾",
         shortProfileText: "外資系ITコンサルティングファームでアーキテクトに従事しつつメーカ企業でシステム内製化のサポートを行っている。本ブログを通じて開発者エクスぺリンエスを最大化するプラクティスについて発信中",
         sampleCodeText: "サンプルコード",
         sampleCodeNotePre: "この記事のサンプルコードは",
