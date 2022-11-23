@@ -44,7 +44,7 @@ module.exports = ctx => ({
   ],
   themeConfig: {
     siteUrl: siteUrl,
-    docsRepo: "creep32/3code-tech-blog",
+    docsRepo: "kuritify/3code-tech-blog",
     docsDir: 'docs',
     codeDir: 'docs/sample-code',
     searchPlaceholder: "search on blog...",
@@ -103,12 +103,12 @@ module.exports = ctx => ({
         socialMedia: [
           {
             name: "Twitter",
-            href: "https://twitter.com/creep_32",
+            href: "https://twitter.com/kuritify",
             icon: "twitter"
           },
           {
             name: "GitHub",
-            href: "https://github.com/creep32",
+            href: "https://github.com/kuritify,
             icon: "github"
           }
         ]
