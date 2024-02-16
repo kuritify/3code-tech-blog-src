@@ -27,6 +27,8 @@ shift $(( OPTIND - 1 ));
 
 cd $ROOT_DIR
 
+yarn docs:build
+
 aws s3 rm s3://tech-blog.3code.dev/ --recursive
 aws s3 cp --recursive ./dist/ s3://tech-blog.3code.dev
 

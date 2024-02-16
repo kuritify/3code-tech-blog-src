@@ -2,3 +2,4 @@
 **/node_modules
 packages/blogs/3code-tech-blog/
 .DS_Store
+*.swp

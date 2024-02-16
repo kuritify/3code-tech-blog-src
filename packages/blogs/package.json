@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "docs:dev": "vuepress dev 3code-tech-blog/docs",
-    "docs:build": "vuepress build 3code-tech-blog/docs"
+    "vuepress": "NODE_OPTIONS=--openssl-legacy-provider vuepress",
+    "docs:dev": "yarn run vuepress dev 3code-tech-blog/docs",
+    "docs:build": "yarn run vuepress build 3code-tech-blog/docs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.12.0",

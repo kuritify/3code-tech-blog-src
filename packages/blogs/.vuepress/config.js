@@ -108,7 +108,7 @@ module.exports = ctx => ({
           },
           {
             name: "GitHub",
-            href: "https://github.com/kuritify,
+            href: "https://github.com/kuritify",
             icon: "github"
           }
         ]
